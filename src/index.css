@@ -149,7 +149,7 @@
   animation: scale-in 0.3s ease-out;
 }
 
-/* Glow effects */
+/* Enhanced glow effects */
 .glow-purple {
   box-shadow: 0 0 20px rgba(168, 85, 247, 0.3);
 }
@@ -160,4 +160,35 @@
 
 .glow-red {
   box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+/* Light mode specific styles */
+.light .bg-gradient-to-br {
+  background: linear-gradient(to bottom right, 
+    rgb(248 250 252), 
+    rgb(243 232 255), 
+    rgb(241 245 249)
+  ) !important;
+}
+
+/* Dark mode coin shadows */
+.dark .coin-glow {
+  filter: drop-shadow(0 0 8px rgba(251, 191, 36, 0.6));
+}
+
+.light .coin-glow {
+  filter: drop-shadow(0 0 6px rgba(251, 191, 36, 0.8));
+}
+
+/* Responsive improvements */
+@media (max-width: 1024px) {
+  .grid-cols-1.lg\:grid-cols-4 {
+    grid-template-rows: 1fr auto;
+  }
+}
+
+@media (max-width: 768px) {
+  .h-\[calc\(100vh-80px\)\] {
+    height: calc(100vh - 60px);
+  }
 }

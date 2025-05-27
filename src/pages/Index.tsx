@@ -13,7 +13,6 @@ const Index = () => {
   const [loginPromptShown, setLoginPromptShown] = useState(false);
 
   useEffect(() => {
-    // Only show login prompt once after 20 seconds
     if (!loginPromptShown) {
       const timer = setTimeout(() => {
         setShowLoginPrompt(true);
@@ -30,21 +29,21 @@ const Index = () => {
 
   return (
     <ThemeProvider>
-      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white overflow-hidden relative transition-colors duration-500">
+      <div className="h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 light:from-slate-50 light:via-purple-50 light:to-slate-100 text-white dark:text-white light:text-gray-900 overflow-hidden relative transition-colors duration-500">
         <EnhancedFloatingCoins />
         
         <Header />
         
-        <main className={`transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
-          <div className="container mx-auto px-4 py-6">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 min-h-[calc(100vh-120px)]">
+        <main className={`h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
+          <div className="h-full px-4 py-4">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 h-full">
               {/* Main Game Area */}
-              <div className="lg:col-span-3 flex flex-col">
+              <div className="lg:col-span-3 h-full">
                 <ActiveCrashGame />
               </div>
               
               {/* Sidebar */}
-              <div className="lg:col-span-1 flex flex-col space-y-4 max-h-[calc(100vh-120px)]">
+              <div className="lg:col-span-1 flex flex-col space-y-4 h-full">
                 <div className="flex-shrink-0">
                   <UserActivity />
                 </div>
