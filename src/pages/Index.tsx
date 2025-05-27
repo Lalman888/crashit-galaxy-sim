@@ -1,11 +1,12 @@
 
 import React, { useState, useEffect } from 'react';
-import CrashGame from '../components/CrashGame';
-import ChatSystem from '../components/ChatSystem';
+import EnhancedCrashGame from '../components/EnhancedCrashGame';
+import EnhancedChatSystem from '../components/EnhancedChatSystem';
 import UserActivity from '../components/UserActivity';
-import FloatingCoins from '../components/FloatingCoins';
+import EnhancedFloatingCoins from '../components/EnhancedFloatingCoins';
 import LoginPrompt from '../components/LoginPrompt';
 import Header from '../components/Header';
+import { ThemeProvider } from '../hooks/useTheme';
 
 const Index = () => {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
@@ -20,30 +21,32 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 text-white overflow-hidden relative">
-      <FloatingCoins />
-      
-      <Header />
-      
-      <main className={`transition-all duration-500 ${showLoginPrompt ? 'blur-sm' : ''}`}>
-        <div className="container mx-auto px-4 py-6">
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-120px)]">
-            {/* Main Game Area */}
-            <div className="lg:col-span-3">
-              <CrashGame />
-            </div>
-            
-            {/* Sidebar */}
-            <div className="lg:col-span-1 space-y-4">
-              <UserActivity />
-              <ChatSystem />
+    <ThemeProvider>
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 light:from-gray-100 light:via-purple-100 light:to-gray-100 text-white dark:text-white light:text-gray-900 overflow-hidden relative transition-colors duration-500">
+        <EnhancedFloatingCoins />
+        
+        <Header />
+        
+        <main className={`transition-all duration-500 ${showLoginPrompt ? 'blur-sm' : ''}`}>
+          <div className="container mx-auto px-4 py-6">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-120px)]">
+              {/* Main Game Area */}
+              <div className="lg:col-span-3">
+                <EnhancedCrashGame />
+              </div>
+              
+              {/* Sidebar */}
+              <div className="lg:col-span-1 space-y-4">
+                <UserActivity />
+                <EnhancedChatSystem />
+              </div>
             </div>
           </div>
-        </div>
-      </main>
+        </main>
 
-      {showLoginPrompt && <LoginPrompt />}
-    </div>
+        {showLoginPrompt && <LoginPrompt />}
+      </div>
+    </ThemeProvider>
   );
 };
 
