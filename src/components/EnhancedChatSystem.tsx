@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useRef } from 'react';
 
 interface ChatMessage {
@@ -135,10 +134,6 @@ const EnhancedChatSystem = () => {
 
     return () => clearInterval(interval);
   }, []);
-
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages, typingUsers]);
 
   return (
     <div className="bg-black/40 backdrop-blur-md rounded-2xl border border-purple-500/20 p-4 h-80">
