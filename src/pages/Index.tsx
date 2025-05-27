@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import EnhancedCrashGame from '../components/EnhancedCrashGame';
+import ActiveCrashGame from '../components/ActiveCrashGame';
 import EnhancedChatSystem from '../components/EnhancedChatSystem';
 import UserActivity from '../components/UserActivity';
 import EnhancedFloatingCoins from '../components/EnhancedFloatingCoins';
@@ -32,7 +32,7 @@ const Index = () => {
             <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 h-[calc(100vh-120px)]">
               {/* Main Game Area */}
               <div className="lg:col-span-3">
-                <EnhancedCrashGame />
+                <ActiveCrashGame />
               </div>
               
               {/* Sidebar */}
