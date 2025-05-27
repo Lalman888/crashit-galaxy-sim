@@ -1,17 +1,36 @@
 
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { X } from 'lucide-react';
 
-const LoginPrompt = () => {
+interface LoginPromptProps {
+  onClose?: () => void;
+}
+
+const LoginPrompt: React.FC<LoginPromptProps> = ({ onClose }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
     navigate('/login');
   };
 
+  const handleClose = () => {
+    if (onClose) {
+      onClose();
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black/70 backdrop-blur-sm flex items-center justify-center z-50">
-      <div className="bg-gradient-to-br from-purple-900 to-gray-900 p-8 rounded-3xl border border-purple-500/30 text-center max-w-md mx-4 animate-scale-in">
+      <div className="bg-gradient-to-br from-purple-900 to-gray-900 p-8 rounded-3xl border border-purple-500/30 text-center max-w-md mx-4 animate-scale-in relative">
+        {/* Close button */}
+        <button
+          onClick={handleClose}
+          className="absolute top-4 right-4 text-gray-400 hover:text-white transition-colors"
+        >
+          <X className="w-6 h-6" />
+        </button>
+        
         <div className="text-6xl mb-4">🚀</div>
         <h2 className="text-3xl font-bold text-white mb-4">
           Ready to Play for Real?
