@@ -10,13 +10,16 @@ import { ThemeProvider } from '../hooks/useTheme';
 
 const Index = () => {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-  const [loginPromptShown, setLoginPromptShown] = useState(false);
+  const [loginPromptShown, setLoginPromptShown] = useState(() => {
+    return localStorage.getItem('loginPromptShown') === 'true';
+  });
 
   useEffect(() => {
     if (!loginPromptShown) {
       const timer = setTimeout(() => {
         setShowLoginPrompt(true);
         setLoginPromptShown(true);
+        localStorage.setItem('loginPromptShown', 'true');
       }, 20000);
 
       return () => clearTimeout(timer);
@@ -29,21 +32,21 @@ const Index = () => {
 
   return (
     <ThemeProvider>
-      <div className="h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 light:from-slate-50 light:via-purple-50 light:to-slate-100 text-white dark:text-white light:text-gray-900 overflow-hidden relative transition-colors duration-500">
+      <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 light:from-slate-50 light:via-blue-50 light:to-indigo-100 text-white dark:text-white light:text-gray-900 relative transition-colors duration-500">
         <EnhancedFloatingCoins />
         
         <Header />
         
-        <main className={`h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
-          <div className="h-full px-4 py-4">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 h-full">
+        <main className={`min-h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
+          <div className="px-4 py-4">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 min-h-[calc(100vh-120px)]">
               {/* Main Game Area */}
-              <div className="lg:col-span-3 h-full">
+              <div className="lg:col-span-3">
                 <ActiveCrashGame />
               </div>
               
               {/* Sidebar */}
-              <div className="lg:col-span-1 flex flex-col space-y-4 h-full">
+              <div className="lg:col-span-1 flex flex-col space-y-4 min-h-[calc(100vh-120px)]">
                 <div className="flex-shrink-0">
                   <UserActivity />
                 </div>
