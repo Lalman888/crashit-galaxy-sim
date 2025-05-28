@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import ActiveCrashGame from '../components/ActiveCrashGame';
 import EnhancedChatSystem from '../components/EnhancedChatSystem';
 import UserActivity from '../components/UserActivity';
-import EnhancedFloatingCoins from '../components/EnhancedFloatingCoins';
+import OptimizedFloatingCoins from '../components/OptimizedFloatingCoins';
 import LoginPrompt from '../components/LoginPrompt';
 import Header from '../components/Header';
 import { ThemeProvider } from '../hooks/useTheme';
@@ -38,20 +38,20 @@ const Index = () => {
   return (
     <ThemeProvider>
       <div className="min-h-screen bg-gradient-to-br from-gray-900 via-purple-900 to-gray-900 dark:from-gray-900 dark:via-purple-900 dark:to-gray-900 light:from-slate-50 light:via-blue-50 light:to-indigo-100 text-white dark:text-white light:text-gray-900 relative transition-colors duration-500">
-        <EnhancedFloatingCoins />
+        <OptimizedFloatingCoins />
         
         <Header />
         
         <main className={`min-h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
-          <div className="px-4 py-4">
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-4 min-h-[calc(100vh-120px)]">
+          <div className="px-2 sm:px-4 py-4">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 min-h-[calc(100vh-120px)]">
               {/* Main Game Area */}
-              <div className="lg:col-span-3">
+              <div className="xl:col-span-3 order-1">
                 <ActiveCrashGame />
               </div>
               
               {/* Sidebar */}
-              <div className="lg:col-span-1 flex flex-col space-y-4 min-h-[calc(100vh-120px)]">
+              <div className="xl:col-span-1 flex flex-col space-y-4 min-h-[400px] xl:min-h-[calc(100vh-120px)] order-2">
                 <div className="flex-shrink-0">
                   <UserActivity />
                 </div>
