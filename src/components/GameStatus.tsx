@@ -53,9 +53,9 @@ const GameStatus: React.FC<GameStatusProps> = ({ gamePhase, countdown }) => {
   const Icon = config.icon;
 
   return (
-    <div className={`${config.bgColor} px-4 py-2 rounded-lg border ${config.borderColor} ${config.animation} flex items-center space-x-2`}>
-      <Icon className={`w-4 h-4 ${config.textColor}`} />
-      <span className={`${config.textColor} font-semibold text-sm sm:text-base`}>
+    <div className={`${config.bgColor} px-2 sm:px-3 lg:px-4 py-1.5 sm:py-2 rounded-md sm:rounded-lg border ${config.borderColor} ${config.animation} flex items-center space-x-1 sm:space-x-2`}>
+      <Icon className={`w-3 h-3 sm:w-4 sm:h-4 ${config.textColor}`} />
+      <span className={`${config.textColor} font-semibold text-xs sm:text-sm lg:text-base`}>
         {config.text}
       </span>
     </div>

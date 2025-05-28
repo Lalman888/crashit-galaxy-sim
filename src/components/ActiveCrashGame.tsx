@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import ProfessionalChart from './ProfessionalChart';
 import GameStats from './GameStats';
@@ -80,27 +79,27 @@ const ActiveCrashGame = () => {
   }, [multiplier, userBet]);
 
   return (
-    <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-md rounded-2xl border border-purple-500/20 p-4 lg:p-6 h-full flex flex-col shadow-2xl">
-      {/* Game Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3 flex-shrink-0">
-        <div className="flex items-center space-x-3">
-          <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-3 rounded-xl shadow-lg">
-            <Rocket className="w-6 h-6 text-white" />
+    <div className="bg-gradient-to-br from-gray-900/95 via-gray-800/95 to-gray-900/95 backdrop-blur-md rounded-xl lg:rounded-2xl border border-purple-500/20 p-3 sm:p-4 lg:p-6 h-full flex flex-col shadow-2xl">
+      {/* Game Header - Mobile Optimized */}
+      <div className="flex flex-col space-y-3 sm:space-y-0 sm:flex-row sm:items-center justify-between mb-3 sm:mb-4 flex-shrink-0">
+        <div className="flex items-center space-x-2 sm:space-x-3">
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 p-2 sm:p-3 rounded-lg sm:rounded-xl shadow-lg">
+            <Rocket className="w-4 h-4 sm:w-6 sm:h-6 text-white" />
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-white">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-white">
               Professional Crash
             </h2>
-            <p className="text-gray-400 text-sm">Live Market Simulation</p>
+            <p className="text-gray-400 text-xs sm:text-sm hidden sm:block">Live Market Simulation</p>
           </div>
         </div>
         
         <GameStatus gamePhase={gamePhase} countdown={countdown} />
       </div>
 
-      {/* Enhanced Multiplier Display */}
-      <div className="text-center mb-6 flex-shrink-0">
-        <div className={`text-5xl sm:text-6xl lg:text-7xl font-bold transition-all duration-300 ${
+      {/* Enhanced Multiplier Display - Mobile Responsive */}
+      <div className="text-center mb-4 sm:mb-6 flex-shrink-0">
+        <div className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold transition-all duration-300 ${
           gamePhase === 'running' ? 'text-green-400 animate-pulse drop-shadow-lg' : 
           gamePhase === 'crashed' ? 'text-red-400 drop-shadow-lg' : 'text-gray-400'
         }`}>
@@ -108,12 +107,12 @@ const ActiveCrashGame = () => {
         </div>
         
         {gamePhase === 'running' && (
-          <div className="mt-2">
-            <div className="text-green-400 text-lg animate-pulse">
+          <div className="mt-1 sm:mt-2">
+            <div className="text-green-400 text-sm sm:text-base lg:text-lg animate-pulse">
               🚀 Target: {crashPoint.toFixed(2)}x
             </div>
             {multiplier > crashPoint * 0.8 && (
-              <div className="text-yellow-400 text-sm animate-bounce mt-1">
+              <div className="text-yellow-400 text-xs sm:text-sm animate-bounce mt-1">
                 ⚠️ Danger Zone!
               </div>
             )}
@@ -121,14 +120,14 @@ const ActiveCrashGame = () => {
         )}
         
         {gamePhase === 'crashed' && (
-          <div className="text-red-400 text-lg animate-bounce mt-2">
+          <div className="text-red-400 text-sm sm:text-base lg:text-lg animate-bounce mt-1 sm:mt-2">
             💥 Market Crashed!
           </div>
         )}
       </div>
 
-      {/* Professional Chart */}
-      <div className="relative flex-1 min-h-[250px] sm:min-h-[300px] lg:min-h-[400px] mb-6">
+      {/* Professional Chart - Mobile Height Optimization */}
+      <div className="relative flex-1 min-h-[200px] sm:min-h-[250px] md:min-h-[300px] lg:min-h-[400px] mb-3 sm:mb-4 lg:mb-6">
         <ProfessionalChart 
           multiplier={multiplier} 
           isRunning={isRunning} 
@@ -138,8 +137,8 @@ const ActiveCrashGame = () => {
         />
       </div>
 
-      {/* Enhanced Game Statistics */}
-      <div className="mb-4 flex-shrink-0">
+      {/* Enhanced Game Statistics - Mobile Grid */}
+      <div className="mb-3 sm:mb-4 flex-shrink-0">
         <GameStats 
           userBet={userBet}
           potentialWin={potentialWin}
@@ -148,22 +147,22 @@ const ActiveCrashGame = () => {
         />
       </div>
 
-      {/* Status Info */}
+      {/* Status Info - Mobile Optimized */}
       <div className="text-center flex-shrink-0">
-        <div className="text-gray-400 text-sm">
+        <div className="text-gray-400 text-xs sm:text-sm">
           {gamePhase === 'running' ? (
-            <div className="flex items-center justify-center space-x-4">
-              <span className="text-yellow-400 animate-pulse">
+            <div className="flex flex-col sm:flex-row items-center justify-center space-y-1 sm:space-y-0 sm:space-x-4">
+              <span className="text-yellow-400 animate-pulse text-xs sm:text-sm">
                 ⚡ Auto cash out at 2.00x
               </span>
-              <span className="text-green-400">
+              <span className="text-green-400 text-xs sm:text-sm">
                 🎯 Current target: {crashPoint.toFixed(2)}x
               </span>
             </div>
           ) : (
             <div className="space-y-1">
-              <div>Professional Trading Simulator</div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs sm:text-sm">Professional Trading Simulator</div>
+              <div className="text-xs text-gray-500 hidden sm:block">
                 Using advanced market algorithms for realistic crashes
               </div>
             </div>

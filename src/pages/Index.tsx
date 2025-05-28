@@ -42,16 +42,16 @@ const Index = () => {
         
         <Header />
         
-        <main className={`min-h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
-          <div className="px-2 sm:px-4 py-4">
-            <div className="grid grid-cols-1 xl:grid-cols-4 gap-4 min-h-[calc(100vh-120px)]">
+        <main className={`min-h-[calc(100vh-60px)] sm:min-h-[calc(100vh-80px)] transition-all duration-500 ${showLoginPrompt ? 'blur-sm pointer-events-none' : ''}`}>
+          <div className="px-2 sm:px-4 py-2 sm:py-4">
+            <div className="grid grid-cols-1 xl:grid-cols-4 gap-2 sm:gap-4 min-h-[calc(100vh-100px)] sm:min-h-[calc(100vh-120px)]">
               {/* Main Game Area */}
               <div className="xl:col-span-3 order-1">
                 <ActiveCrashGame />
               </div>
               
-              {/* Sidebar */}
-              <div className="xl:col-span-1 flex flex-col space-y-4 min-h-[400px] xl:min-h-[calc(100vh-120px)] order-2">
+              {/* Sidebar - Mobile Bottom, Desktop Right */}
+              <div className="xl:col-span-1 flex flex-col space-y-2 sm:space-y-4 min-h-[300px] sm:min-h-[400px] xl:min-h-[calc(100vh-120px)] order-2">
                 <div className="flex-shrink-0">
                   <UserActivity />
                 </div>
