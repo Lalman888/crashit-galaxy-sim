@@ -10,21 +10,26 @@ import { ThemeProvider } from '../hooks/useTheme';
 
 const Index = () => {
   const [showLoginPrompt, setShowLoginPrompt] = useState(false);
-  const [loginPromptShown, setLoginPromptShown] = useState(() => {
+  const [startTime] = useState(() => Date.now());
+  const [hasShownPrompt, setHasShownPrompt] = useState(() => {
     return localStorage.getItem('loginPromptShown') === 'true';
   });
 
   useEffect(() => {
-    if (!loginPromptShown) {
-      const timer = setTimeout(() => {
-        setShowLoginPrompt(true);
-        setLoginPromptShown(true);
-        localStorage.setItem('loginPromptShown', 'true');
-      }, 20000);
+    if (hasShownPrompt) return;
 
-      return () => clearTimeout(timer);
-    }
-  }, [loginPromptShown]);
+    const checkTimer = () => {
+      const elapsed = Date.now() - startTime;
+      if (elapsed >= 20000) { // 20 seconds
+        setShowLoginPrompt(true);
+        setHasShownPrompt(true);
+        localStorage.setItem('loginPromptShown', 'true');
+      }
+    };
+
+    const interval = setInterval(checkTimer, 1000);
+    return () => clearInterval(interval);
+  }, [startTime, hasShownPrompt]);
 
   const handleCloseLoginPrompt = () => {
     setShowLoginPrompt(false);
